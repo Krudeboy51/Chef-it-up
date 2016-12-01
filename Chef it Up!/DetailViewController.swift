@@ -26,7 +26,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     var image : UIImage!
     var recipeData = [NSManagedObject]()
     let data = DataController()
-    var ids: [NSManagedObject] = []
+    let moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     var detailItem: AnyObject? {
         didSet {
@@ -120,35 +120,17 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     
-    func save(name: Int) {
+    func save(num: Int) {
         
-        guard let appDelegate =
-            UIApplication.sharedApplication().delegate as? AppDelegate else {
-                return
-        }
+        let entityDesc = NSEntityDescription.entityForName("Recipe", inManagedObjectContext: moc)
+        let recipeobj = Recipe(entity: entityDesc!, insertIntoManagedObjectContext: moc)
         
-        // 1
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
+        recipeobj.id = num
         
-        // 2
-        let entity =
-            NSEntityDescription.entityForName("Recipe", inManagedObjectContext: managedContext)!
-        
-        let person = NSManagedObject(entity: entity,
-                                     insertIntoManagedObjectContext: managedContext)
-        
-        // 3
-        person.setValue(name, forKeyPath: "id")
-        
-        // 4
         do {
-            try managedContext.save()
-            ids.append(person)
-            print("SAVING")
-            print(ids)
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
+            try moc.save()
+        }catch let error as NSError{
+            print("Error: \(error.localizedFailureReason)")
         }
         
     }

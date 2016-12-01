@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -28,6 +28,11 @@
 		94416F411DECB069001C358C /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416F401DECB069001C358C /* SwiftyJSON.swift */; };
 		94416F451DECB0CF001C358C /* MCONSTANTS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416F441DECB0CF001C358C /* MCONSTANTS.swift */; };
 		94416F471DECB142001C358C /* CustomTBVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416F461DECB142001C358C /* CustomTBVCell.swift */; };
+		94F298131DF06ABF0060180A /* CustomSaveItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F298121DF06ABF0060180A /* CustomSaveItemCell.swift */; };
+		94F298191DF06C240060180A /* SavedItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F298181DF06C240060180A /* SavedItemsTableViewController.swift */; };
+		94F2981B1DF06CB10060180A /* CustomSavedItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F2981A1DF06CB10060180A /* CustomSavedItemTableViewCell.swift */; };
+		94F298221DF073170060180A /* Recipe+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F298201DF073170060180A /* Recipe+CoreDataProperties.swift */; };
+		94F298231DF073170060180A /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F298211DF073170060180A /* Recipe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +79,11 @@
 		94416F401DECB069001C358C /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		94416F441DECB0CF001C358C /* MCONSTANTS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCONSTANTS.swift; sourceTree = "<group>"; };
 		94416F461DECB142001C358C /* CustomTBVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTBVCell.swift; sourceTree = "<group>"; };
+		94F298121DF06ABF0060180A /* CustomSaveItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSaveItemCell.swift; sourceTree = "<group>"; };
+		94F298181DF06C240060180A /* SavedItemsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedItemsTableViewController.swift; sourceTree = "<group>"; };
+		94F2981A1DF06CB10060180A /* CustomSavedItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSavedItemTableViewCell.swift; sourceTree = "<group>"; };
+		94F298201DF073170060180A /* Recipe+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Recipe+CoreDataProperties.swift"; path = "Chef it Up!/Recipe+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		94F298211DF073170060180A /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Recipe.swift; path = "Chef it Up!/Recipe.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +114,8 @@
 		94416EF21DECADB9001C358C = {
 			isa = PBXGroup;
 			children = (
+				94F298201DF073170060180A /* Recipe+CoreDataProperties.swift */,
+				94F298211DF073170060180A /* Recipe.swift */,
 				94416EFD1DECADB9001C358C /* Chef it Up! */,
 				94416F141DECADB9001C358C /* Chef it Up!Tests */,
 				94416F1F1DECADB9001C358C /* Chef it Up!UITests */,
@@ -125,24 +137,15 @@
 			isa = PBXGroup;
 			children = (
 				94416EFE1DECADB9001C358C /* AppDelegate.swift */,
-				94416F001DECADB9001C358C /* MasterViewController.swift */,
-				94416F021DECADB9001C358C /* DetailViewController.swift */,
+				94F298141DF06AFB0060180A /* LayoutControllers */,
 				94416F041DECADB9001C358C /* Main.storyboard */,
 				94416F071DECADB9001C358C /* Assets.xcassets */,
 				94416F091DECADB9001C358C /* LaunchScreen.storyboard */,
 				94416F0C1DECADB9001C358C /* Info.plist */,
-				94416F3A1DECB044001C358C /* RecipeModel.swift */,
-				94416F3C1DECB052001C358C /* MashapeJsonParser.swift */,
-				94416F3E1DECB064001C358C /* RecipeCollection.swift */,
-				94416F401DECB069001C358C /* SwiftyJSON.swift */,
-				94416F441DECB0CF001C358C /* MCONSTANTS.swift */,
-				94416F461DECB142001C358C /* CustomTBVCell.swift */,
+				94F298151DF06B370060180A /* Data Model */,
 				6E624CF91DEE4CEF00B77711 /* recipedatamodel.xcdatamodeld */,
 				6E624CFC1DEE61F500B77711 /* DataController.swift */,
 				6E624D021DEE8A2F00B77711 /* RecipeData.swift */,
-				6E624D501DF020BD00B77711 /* MenuOptionViewController.swift */,
-				6E624D521DF021D300B77711 /* MainMenuTBVC.swift */,
-				6E624D541DF04C4100B77711 /* CategoriesViewController.swift */,
 			);
 			path = "Chef it Up!";
 			sourceTree = "<group>";
@@ -163,6 +166,34 @@
 				94416F221DECADB9001C358C /* Info.plist */,
 			);
 			path = "Chef it Up!UITests";
+			sourceTree = "<group>";
+		};
+		94F298141DF06AFB0060180A /* LayoutControllers */ = {
+			isa = PBXGroup;
+			children = (
+				94416F461DECB142001C358C /* CustomTBVCell.swift */,
+				94416F001DECADB9001C358C /* MasterViewController.swift */,
+				94416F021DECADB9001C358C /* DetailViewController.swift */,
+				6E624D501DF020BD00B77711 /* MenuOptionViewController.swift */,
+				6E624D521DF021D300B77711 /* MainMenuTBVC.swift */,
+				6E624D541DF04C4100B77711 /* CategoriesViewController.swift */,
+				94F298121DF06ABF0060180A /* CustomSaveItemCell.swift */,
+				94F298181DF06C240060180A /* SavedItemsTableViewController.swift */,
+				94F2981A1DF06CB10060180A /* CustomSavedItemTableViewCell.swift */,
+			);
+			name = LayoutControllers;
+			sourceTree = "<group>";
+		};
+		94F298151DF06B370060180A /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				94416F3A1DECB044001C358C /* RecipeModel.swift */,
+				94416F3C1DECB052001C358C /* MashapeJsonParser.swift */,
+				94416F3E1DECB064001C358C /* RecipeCollection.swift */,
+				94416F401DECB069001C358C /* SwiftyJSON.swift */,
+				94416F441DECB0CF001C358C /* MCONSTANTS.swift */,
+			);
+			name = "Data Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,7 +278,7 @@
 				};
 			};
 			buildConfigurationList = 94416EF61DECADB9001C358C /* Build configuration list for PBXProject "Chef it Up!" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -299,6 +330,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				94416F031DECADB9001C358C /* DetailViewController.swift in Sources */,
+				94F2981B1DF06CB10060180A /* CustomSavedItemTableViewCell.swift in Sources */,
+				94F298221DF073170060180A /* Recipe+CoreDataProperties.swift in Sources */,
+				94F298191DF06C240060180A /* SavedItemsTableViewController.swift in Sources */,
 				94416F3F1DECB064001C358C /* RecipeCollection.swift in Sources */,
 				94416F3B1DECB044001C358C /* RecipeModel.swift in Sources */,
 				94416F3D1DECB052001C358C /* MashapeJsonParser.swift in Sources */,
@@ -310,9 +344,11 @@
 				6E624D031DEE8A2F00B77711 /* RecipeData.swift in Sources */,
 				94416EFF1DECADB9001C358C /* AppDelegate.swift in Sources */,
 				6E624CFB1DEE4CEF00B77711 /* recipedatamodel.xcdatamodeld in Sources */,
+				94F298131DF06ABF0060180A /* CustomSaveItemCell.swift in Sources */,
 				6E624D531DF021D300B77711 /* MainMenuTBVC.swift in Sources */,
 				6E624D511DF020BD00B77711 /* MenuOptionViewController.swift in Sources */,
 				6E624D551DF04C4100B77711 /* CategoriesViewController.swift in Sources */,
+				94F298231DF073170060180A /* Recipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,7 +496,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = T3JXW3P9UL;
 				INFOPLIST_FILE = "Chef it Up!/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mrkking.Chef-it-Up-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -476,7 +512,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = T3JXW3P9UL;
 				INFOPLIST_FILE = "Chef it Up!/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mrkking.Chef-it-Up-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
