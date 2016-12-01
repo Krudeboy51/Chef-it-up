@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class RecipeModel{
+    var id : Int!
     var vegan : Bool?
     var prepMin : Int!
     var cookmin : Int!

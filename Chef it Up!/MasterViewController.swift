@@ -8,13 +8,13 @@
 
 import UIKit
 
-class MasterViewController: UITableViewController {
+class MasterViewController: UITableViewController, UISearchBarDelegate{
 
     var detailViewController: DetailViewController? = nil
     var objects = [AnyObject]()
     var recipeCollection = RecipeCollection()
     var recipeList = [Dictionary<String, String>]()
-
+    let searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +35,9 @@ class MasterViewController: UITableViewController {
             self.recipeList = recipes
             self.tableView.reloadData()
         }
+        self.tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.placeholder = "search e.g. eggs"
+        searchController.searchBar.delegate = self
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -70,6 +73,8 @@ class MasterViewController: UITableViewController {
             }
         }
     }
+    
+
 
     // MARK: - Segues
 
@@ -92,6 +97,8 @@ class MasterViewController: UITableViewController {
             }
         }
     }
+    
+    
 
     // MARK: - Table View
 

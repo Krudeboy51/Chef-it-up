@@ -46,6 +46,7 @@ class MashapeJsonParser: NSObject{
                     let rec = RecipeModel()
                     var jError: NSError?
                     let parseData = JSON.init(data: mData, options: NSJSONReadingOptions.AllowFragments, error: &jError)
+                    rec.id = parseData["id"].intValue
                     rec.title = parseData["title"].stringValue
                     rec.vegan = parseData["vegan"].boolValue
                     rec.prepMin = parseData["preparationMinutes"].intValue

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -23,6 +24,9 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     var recipe : RecipeModel!
     var image : UIImage!
+    var recipeData = [NSManagedObject]()
+    let data = DataController()
+    var ids: [NSManagedObject] = []
     
     var detailItem: AnyObject? {
         didSet {
@@ -39,6 +43,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             }
         }
         if recipe != nil{
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "save", style: .Plain, target: self, action: Selector(self.save(recipe.id)))
             hideAll(false)
             rIngredientsTBV.hidden = false
             rInstructions.hidden = true
@@ -81,10 +86,13 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             rInstructions.hidden = true
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         self.configureView()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -97,7 +105,11 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recipe.ingredients.count
+        if self.recipe.ingredients.count > 0 {
+            return recipe.ingredients.count
+        }else{
+            return 0
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -108,6 +120,38 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     
-
+    func save(name: Int) {
+        
+        guard let appDelegate =
+            UIApplication.sharedApplication().delegate as? AppDelegate else {
+                return
+        }
+        
+        // 1
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        // 2
+        let entity =
+            NSEntityDescription.entityForName("Recipe", inManagedObjectContext: managedContext)!
+        
+        let person = NSManagedObject(entity: entity,
+                                     insertIntoManagedObjectContext: managedContext)
+        
+        // 3
+        person.setValue(name, forKeyPath: "id")
+        
+        // 4
+        do {
+            try managedContext.save()
+            ids.append(person)
+            print("SAVING")
+            print(ids)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        
+    }
+    
 }
 
